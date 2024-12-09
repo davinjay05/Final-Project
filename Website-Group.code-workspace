@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../Website-Group"
+		},
+		{
+			"name": "Final-Project",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Final-Project"
+	}
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donation Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: white;
+    }
+    .header {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 112px;
+      background: #002147;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 76px;
+    }
+    .header .logo {
+      font-size: 36px;
+      color: #CAF0F8;
+      font-family: 'Newsreader', serif;
+      font-weight: 700;
+    }
+    .header .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+    .header .nav-links div {
+      color: #E0FBFC;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .header .login {
+      padding: 13.5px 18px;
+      background: #007EA7;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+    }
+    .main-content {
+      position: absolute;
+      top: 112px;
+      width: 100%;
+      background: #002147;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: calc(100vh - 112px);
+    }
+    .text-content {
+      max-width: 600px;
+      margin-right: 40px;
+    }
+    .text-content h1 {
+      font-size: 64px;
+      line-height: 1.1;
+      font-weight: 600;
+    }
+    .text-content p {
+      font-size: 16px;
+      margin: 20px 0;
+    }
+    .donate-button {
+      background: #FCA311;
+      padding: 15px 30px;
+      border-radius: 5px;
+      font-weight: 800;
+      font-size: 16px;
+      text-transform: uppercase;
+      color: #002147;
+      cursor: pointer;
+    }
+    .image-container {
+      position: relative;
+      width: 50%;
+    }
+    .image-container img {
+      max-width: 100%;
+      border-radius: 20px;
+    }
+    .raised-amount {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: #90E0EF;
+      padding: 20px;
+      border-radius: 10px;
+      color: #002147;
+      font-size: 24px;
+      text-align: center;
+    }
+    .raised-amount h2 {
+      font-size: 48px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">OceanAction</div>
+      <div class="nav-links">
+        <div>Point Shop</div>
+        <div>Community</div>
+        <div>Join a Challenge</div>
+        <div>My profile</div>
+      </div>
+      <div class="login">Login/Sign Up</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="text-content">
+        <h1>Fundraise for<br/>a great cause</h1>
+        <p>Vulputate eu scelerisque felis imperdiet proin fermentum leo. Est lorem ipsum dolor sit.</p>
+        <div class="donate-button">Donate Now</div>
+      </div>
+      <div class="image-container">
+        <img src="DONATION.png" alt="DONATION.jpg">
+        <div class="raised-amount">
+          <p>Raised so far</p>
+          <h2>$250,027</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
