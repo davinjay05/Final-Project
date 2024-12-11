@@ -40,19 +40,28 @@
       color: #E0FBFC;
       font-size: 16px;
       cursor: pointer;
+      transition: color 0.3s, transform 0.2s;
+    }
+    .header .nav-links div:hover {
+      color: #FCA311;
+      transform: scale(1.1);
     }
     .header .login {
-  margin-right: 160px; 
-  padding: 13.5px 18px;
-  background: #007EA7;
-  border-radius: 8px;
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  cursor: pointer;
-}
-
+      margin-right: 160px;
+      padding: 13.5px 18px;
+      background: #007EA7;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .header .login:hover {
+      background: #005f99;
+      transform: scale(1.1);
+    }
     .main-content {
       position: absolute;
       top: 112px;
@@ -87,6 +96,11 @@
       text-transform: uppercase;
       color: #002147;
       cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .donate-button:hover {
+      background: #ffd24d;
+      transform: scale(1.1);
     }
     .image-container {
       position: relative;
@@ -126,7 +140,6 @@
       </div>
       <div class="login">Login/Sign Up</div>
     </div>
-
 
     <div class="main-content">
       <div class="text-content">
