@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+        }
+        .container {
+            width: 80%;
+            height: 80%;
+            display: flex;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-section {
+            flex: 1;
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            background-color: white;
+        }
+        .form-section h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px; 
+        }
+        .form-section form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-section input[type="text"],
+        .form-section input[type="email"],
+        .form-section input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .form-section .terms {
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+        .form-section .terms input {
+            margin-right: 10px;
+        }
+        .form-section button {
+            width: 100%;
+            padding: 12px;
+            background-color: #003459;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-section .alternative-login {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 10px;
+        }
+        .form-section .alternative-login button {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .form-section .alternative-login button img {
+            width: 20px;
+        }
+        .form-section .signin-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .form-section .signin-link a {
+            color: #003459;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .image-section {
+            flex: 1;
+            background: url('LOGIN(1).png') no-repeat center center;
+            background-size: cover;
+        }
+        .alternative-signup {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .alternative-signup-btn {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #D9D9D9;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .alternative-signup-btn img {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h1>Get Started Now</h1>
+            <form>
+                <input type="text" placeholder="Enter your name">
+                <input type="email" placeholder="Enter your email">
+                <input type="password" placeholder="Enter your password">
+                <div class="terms">
+                    <input type="checkbox" required> I agree to the <a href="#">terms & policy</a>
+                </div>
+                <button type="submit">Signup</button>
+            </form>
+
+            <div class="alternative-signup">
+                <button>
+                    <img src="LOGIN(2).png" alt="Google"> 
+                    Sign in with Google
+                </button>
+                <button>
+                    <img src="LOGIN(3).png" alt="Apple">
+                    Sign in with Apple
+                </button>
+            </div>
+            <div class="signin-link">
+                Have an account? <a href="#">Sign In</a>
+            </div>
+        </div>
+        <div class="image-section"></div>
+    </div>
+</body>
+</html>
