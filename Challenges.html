@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+        }
+        header {
+            background: white;
+            color: #14213D;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        header .logo {
+            font-family: 'Newsreader', serif;
+            font-size: 36px;
+            font-weight: 700;
+        }
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            color:black;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 200px;
+        }
+        .cta-button {
+            background: #090C9B;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .challenge-card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 10px;
+            margin-left: 250px;
+            margin-right: 250px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .challenge-content {
+            max-width: 85%;
+        }
+
+        .challenge-name {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .challenge-description {
+            font-size: 14px;
+            color: #555555;
+        }
+        .refresh-button {
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            padding: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .refresh-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .refresh-button:focus {
+            outline: none;
+        }
+        .main-section {
+            text-align: center;
+            font-family: 'Newsreader', serif;
+            padding: 50px 20px;
+        }
+        h1 {
+            margin-left: 20px;
+            font-family: 'Times New Roman', serif;
+        }
+        h2 {
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+        }
+        .main-section h1 {
+            font-family: 'Newsreader', serif;
+            font-size: 64px;
+            color: black;
+            margin: 50px;
+        }
+        .progress-container {
+            display: flex;
+            flex-direction: row; /* Vertical layout */
+            justify-content: flex-start;
+            align-items: center;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 900px; /* Smaller width */
+            height: 100px; /* Smaller height */
+            text-align: center;
+        }
+        .step {
+            display: flex;
+            flex-direction: column; /* Horizontal alignment of circle and label */
+            align-items: center;
+            position: relative;
+            margin-bottom: 30px; /* Less spacing between steps */
+            width: 50%;
+        }
+        .step .circle {
+            width: 30px;
+            height: 30px;
+            border: 2px solid #d3d3d3;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease-in-out;
+            font-size: 24px;
+        }
+        .step.active .circle {
+            background-color: #090C9B;
+            border-color: #090C9B;
+            color: white;
+        }
+        .step.complete .circle {
+            background-color: #090C9B;
+            border-color: #090C9B;
+            color: white;
+        }
+        .step .line {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30%;
+            height: 2px;
+            background-color: #d3d3d3;
+            z-index: -1;
+            transform: translateY(-50%);
+            height: 100%;
+        }
+        .step.complete .line {
+            background-color: #090C9B;
+        }
+        .step:last-child .line {
+            display: none;
+        }
+        .step .label {
+            margin-top: 10px;
+            font-size: 12px;
+            text-align: center;
+            color: #333;
+        }
+        .buttons-container {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        
+        .complete-button:disabled {
+            background-color: #d3d3d3;
+            cursor: not-allowed;
+        }
+        .button {
+            background: #090C9B;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .complete-button {
+            background-color: #090C9B;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            display: block;
+            margin: 20px auto 0 auto; 
+            text-align: center;
+        }
+        footer {
+            background: #14213D;
+            color: #E0FBFC;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">OceanAction</div>
+    <nav>
+        <a href="#shop">Point Shop</a>
+        <a href="#community">Community</a>
+        <a href="#challenges">Join a Challenge</a>
+        <a href="#profile">My Profile</a>
+        <a href="C:\Users\My Laptop\Downloads\project assignment\Login.html" class="cta-button">Login/Sign Up</a>
+    </nav>
+</header>
+<h1>Challenges</h1>
+
+<div class="divider"></div>
+<h2>Milestone Progress</h2>
+<div class="progress-container">
+        <div class="step">
+            <div class="circle">✓</div>
+            <div class="line"></div>
+            <div class="label">5 challenges completed</div>
+        </div>
+        <div class="step">
+            <div class="circle">✓</div>
+            <div class="line"></div>
+            <div class="label">10 challenges completed</div>
+        </div>
+        <div class="step">
+            <div class="circle">✓</div>
+            <div class="line"></div>
+            <div class="label">15 challenges completed</div>
+        </div>
+        <div class="step">
+            <div class="circle">✓</div>
+            <div class="line"></div>
+            <div class="label">20 challenges completed</div>
+        </div>
+        <div class="step">
+            <div class="circle">✓</div>
+            <div class="label">25 challenges completed</div>
+        </div>
+    </div>
+    
+
+    <div class="challenge-card">
+        <div class="challenge-content">
+            <div class="challenge-name">Insert Challenge Name</div>
+            <div class="challenge-description">Insert Challenge Description</div>
+        </div>
+        <button class="refresh-button">&#x21bb;</button>
+    </div>
+    
+    <div class="challenge-card">
+        <div class="challenge-content">
+            <div class="challenge-name">Insert Challenge Name</div>
+            <div class="challenge-description">Insert Challenge Description</div>
+        </div>
+        <button class="refresh-button">&#x21bb;</button>
+    </div>
+    
+    <div class="challenge-card">
+        <div class="challenge-content">
+            <div class="challenge-name">Insert Challenge Name</div>
+            <div class="challenge-description">Insert Challenge Description</div>
+        </div>
+        <button class="refresh-button">&#x21bb;</button>
+    </div>
+    <div class="button-container">
+        <button class="complete-button">Complete Challenge</button>
+    </div>
+</div>
+    <script>
+        const steps = document.querySelectorAll('.step');
+        const button = document.querySelector('.complete-button');
+        let currentStep = 0;
+
+        button.addEventListener('click', () => {
+            if (currentStep < steps.length) {
+                steps[currentStep].classList.add('complete');
+                if (currentStep + 1 < steps.length) {
+                    steps[currentStep + 1].classList.add('active');
+                }
+                currentStep++;
+
+                // Disable button if all steps are complete
+                if (currentStep === steps.length) {
+                    button.disabled = true;
+                    button.textContent = "All Challenges Completed!";
+                }
+            }
+        });
+
+        // Initialize first step as active
+        steps[0].classList.add('active');
+    </script>
+</body>
+</html>
