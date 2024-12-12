@@ -52,11 +52,16 @@
             margin-left: 250px;
             margin-right: 250px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: flex-end;
             align-items: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
+        .challenge-card label {
+            display: flex;
+            flex-direction: column-reverse; /* Reverse the order of checkbox and content */
+            align-items: flex-end;
+        }
         .challenge-content {
             max-width: 85%;
         }
@@ -258,9 +263,12 @@
 
     <div class="challenge-card">
         <div class="challenge-content">
-            <div class="challenge-name">Understand and beat marine pollution</div>
-            <div class="challenge-description">Understand and map land and sea-based sources of pollutants and contaminants and their potential impacts on human health and ocean ecosystems and develop solutions to remove or mitigate them.</div>
-            <img src="Understand-and-beat-marine-pollution.webp" width="200">
+                <div class="challenge-name">Understand and beat marine pollution</div>
+                <div class="challenge-description">Understand and map land and sea-based sources of pollutants and contaminants and their potential impacts on human health and ocean ecosystems and develop solutions to remove or mitigate them.</div>
+                <img src="Understand-and-beat-marine-pollution.webp" width="200">
+             <input type="checkbox" id="challenge1">
+             <label for="challenge1">
+            </label>
         </div>
         <button class="refresh-button">&#x21bb;</button>
     </div>
@@ -270,6 +278,7 @@
             <div class="challenge-name">Protect and restore ecosystems and biodiversity</div>
             <div class="challenge-description">Understand the effects of multiple stressors on ocean ecosystems, and develop solutions to monitor, protect, manage and restore ecosystems and their biodiversity under changing environmental, social and climate conditions.</div>
             <img src="Protect-and-restore-ecosystems-and-biodiversity.webp" width="200">
+            <span class="tick">✓</span>
         </div>
         <button class="refresh-button">&#x21bb;</button>
     </div>
@@ -279,6 +288,7 @@
             <div class="challenge-name">Create a digital representation of the ocean</div>
             <div class="challenge-description">Through multi-stakeholder collaboration, develop a comprehensive digital representation of the ocean, including a dynamic ocean map, which provides free and open access for exploring, discovering, and visualizing past, current, and future ocean conditions in a manner relevant to diverse stakeholders.</div>
             <img src="Create-a-digital-representation-of-the-ocean.webp" width="200">
+            <span class="tick">✓</span>
         </div>
         <button class="refresh-button">&#x21bb;</button>
     </div>
