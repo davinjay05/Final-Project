@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Layout</title>
+    <style>
+       body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+        }
+        header {
+            background: white;
+            color: #14213D;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        header .logo {
+            font-family: 'Newsreader', serif;
+            font-size: 36px;
+            font-weight: 700;
+        }
+        h1 {
+            margin-left: 20px;
+            font-family: 'Times New Roman', serif;
+        }
+        h2 {
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            color:black;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .cta-button {
+            background: #090C9B;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .login {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+
+        .login button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        .login button:hover {
+            background-color: #0041e0;
+        }
+        .shop-header {
+            padding: 20px;
+            text-align: center;
+            background-color: #f4faff;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .shop-header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .points {
+            background-color: #dff4ff;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .shop-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: contain;
+        }
+
+        .product-card h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .product-card button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .product-card button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">OceanAction</div>
+        <div class="nav">
+            <a href="#shop">Point Shop</a>
+            <a href="#community">Community</a>
+            <a href="#challenges">Join a Challenge</a>
+            <a href="#profile">My Profile</a>
+            <a href="C:\Users\My Laptop\Downloads\project assignment\Login.html" class="cta-button">Login/Sign Up</a>
+        </div>
+        <div class="login">
+            <button>Login/Sign Up</button>
+        </div>
+        <div class="shop-header">
+            <h1>AquaPoint Shop</h1>
+            <div class="points">90 AP</div>
+        </div>
+   
+    
+        <div class="shop-container">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>$10.00</p>
+                <button>Buy</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>$15.00</p>
+                <button>Buy</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>$20.00</p>
+                <button>Buy</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150" alt="Product 4">
+                <h3>Product 4</h3>
+                <p>$25.00</p>
+                <button>Buy</button>
+        </div>
+    </div>
+</body>
+</html>
