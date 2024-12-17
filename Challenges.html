@@ -261,26 +261,26 @@
     <div class="step complete">
         <div class="circle">✓</div>
         <div class="line"></div>
-        <div class="label">5 challenges completed</div>
+        <div class="label">1 challenges completed</div>
     </div>
     <div class="step complete">
         <div class="circle">✓</div>
         <div class="line"></div>
-        <div class="label">10 challenges completed</div>
+        <div class="label">2 challenges completed</div>
     </div>
     <div class="step complete">
         <div class="circle">✓</div>
         <div class="line"></div>
-        <div class="label">15 challenges completed</div>
+        <div class="label">3 challenges completed</div>
     </div>
     <div class="step active">
         <div class="circle">✓</div>
         <div class="line"></div>
-        <div class="label">20 challenges completed</div>
+        <div class="label">4 challenges completed</div>
     </div>
     <div class="step">
         <div class="circle"></div>
-        <div class="label">25 challenges completed</div>
+        <div class="label">5 challenges completed</div>
     </div>
 </div>
 
@@ -312,66 +312,84 @@
             </div>
             <button onclick="completeChallenge(this)">Complete</button>
         </div>
+        <div class="challenge-card">
+            <img src="C:\\Users\\My Laptop\\Downloads\\project assignment\\Final-Project\\reduce waste.jpg" alt="Challenge 3">
+            <div>
+               <strong>Reduce waste</strong>
+               <p>much of the waste that we produce on land ends up in the oceans. 
+                Stop using plastic bags: Usage and wrong disposal of plastic is a major cause of marine pollution</p>
+            </div>
+            <button onclick="completeChallenge(this)">Complete</button>
+        </div>
+        <div class="challenge-card">
+            <img src="C:\\Users\\My Laptop\\Downloads\\project assignment\\Final-Project\\cleanup4.jpg" alt="Challenge 3">
+            <div>
+               <strong>Organize a cleanup project for rivers and oceans. </strong>
+               <p>Organize a cleanup project for rivers and oceans. 
+                Engage your whole community to clean up a local river, seaside or an ocean.</p>
+            </div>
+            <button onclick="completeChallenge(this)">Complete</button>
+        </div>
+        
 </div>
 
 <script>
-    // Initialize or retrieve points and completed challenges
+    // Retrieve or initialize points
     let points = localStorage.getItem("points") ? parseInt(localStorage.getItem("points")) : 0;
-    let challengesCompleted = localStorage.getItem("challengesCompleted") 
-        ? parseInt(localStorage.getItem("challengesCompleted")) 
-        : 0;
+    let completedChallenges = 0; // Reset progress bar each time page reloads
+    const totalChallenges = 5; // Total number of challenges
 
-    // Function to complete a challenge
-    function completeChallenge(button) {
-        if (!button.disabled) {
-            // Update button state
-            button.disabled = true;
-            button.textContent = "Completed!";
-            
-            // Update points and challenges
-            points += 50;
-            challengesCompleted += 1;
+    // Update the progress bar dynamically
+    function updateProgressBar() {
+        const steps = document.querySelectorAll('.step');
 
-            // Save to localStorage
-            localStorage.setItem("points", points);
-            localStorage.setItem("challengesCompleted", challengesCompleted);
+        // Reset all steps first
+        steps.forEach(step => {
+            step.classList.remove('complete', 'active');
+        });
 
-            alert(`Challenge completed! You earned 50 AP. Total: ${points} AP`);
+        // Update progress
+        steps.forEach((step, index) => {
+            if (index < completedChallenges) {
+                step.classList.add('complete');
+            } else if (index === completedChallenges) {
+                step.classList.add('active');
+            }
+        });
 
-            // Update milestone progress immediately
-            updateProgress();
+        // If all challenges are completed
+        if (completedChallenges >= totalChallenges) {
+            steps.forEach(step => step.classList.add('complete'));
+            alert("Congratulations! You've completed all challenges for this session!");
         }
     }
 
-    // Function to dynamically update milestone progress bar
-    function updateProgress() {
-        const steps = document.querySelectorAll(".step");
-        
-        steps.forEach((step, index) => {
-            const circle = step.querySelector(".circle");
-            const line = step.querySelector(".line");
-            const stepRequirement = (index + 1) * 5; // Milestone targets: 5, 10, 15, etc.
+    // Handle challenge completion
+    function completeChallenge(button) {
+        if (button.disabled) return; // Prevent double-clicks
 
-            // Reset the visual states
-            step.classList.remove("active", "complete");
-            circle.textContent = ""; // Clear old text
+        // Mark the challenge as completed
+        button.disabled = true;
+        button.textContent = "Completed!";
 
-            if (challengesCompleted >= stepRequirement) {
-                // Mark the milestone as complete
-                step.classList.add("complete");
-                circle.textContent = "✓";
-            } else if (challengesCompleted >= stepRequirement - 5 && challengesCompleted < stepRequirement) {
-                // Mark the milestone as active (current in-progress step)
-                step.classList.add("active");
-                circle.textContent = "✓";
-            }
-        });
+        // Increment progress
+        completedChallenges += 1;
+
+        // Add points (persisted)
+        points += 50;
+        localStorage.setItem("points", points);
+
+        // Update the progress bar
+        updateProgressBar();
+
+        // Alert the user
+        alert(`Challenge completed! You earned 50 AP. Total points: ${points}`);
     }
 
-    // Ensure progress is updated when the page is loaded
-    document.addEventListener("DOMContentLoaded", updateProgress);
+    // On page load, reset the progress bar
+    completedChallenges = 0; // Ensures the progress resets on refresh
+    updateProgressBar();
 </script>
-
 
 </body>
 </html>

@@ -223,23 +223,23 @@
             <button onclick="purchaseItem(100, this)">Buy</button>
         </div>
     </div>
-    <script> 
-        let points = localStorage.getItem("points") ? parseInt(localStorage.getItem("points")) : 90; 
+    <script>
+        let points = localStorage.getItem("points") ? parseInt(localStorage.getItem("points")) : 0;
         const pointsDisplay = document.getElementById("pointsDisplay");
         pointsDisplay.textContent = points;
 
-
-        function purchaseItem(cost, button) { 
+        function purchaseItem(cost, button) {
             if (points >= cost) {
-                points -= cost; 
-                localStorage.setItem("points", points);
-                pointsDisplay.textContent = points;
-                button.disabled = true; 
-                button.textContent = "Purchased"; 
-            } else { 
-                alert("Not enough points!"); 
-            } 
-        } 
+                points -= cost;
+                localStorage.setItem("points", points); // Update localStorage
+                pointsDisplay.textContent = points; // Update display
+                button.disabled = true;
+                button.textContent = "Purchased!";
+            } else {
+                alert("Not enough points!");
+            }
+        }
     </script>
+
 </body>
 </html>
