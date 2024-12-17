@@ -148,11 +148,11 @@
         }
         .step {
             display: flex;
-            flex-direction: column; /* Horizontal alignment of circle and label */
+            flex-direction: column;
             align-items: center;
             position: relative;
-            margin-bottom: 30px; /* Less spacing between steps */
-            width: 50%;
+            margin: 0 10px; /* Add horizontal spacing */
+            width: 100px; /* Ensure consistent width for each step */
         }
         .step .circle {
             width: 30px;
@@ -177,15 +177,14 @@
             color: white;
         }
         .step .line {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 30%;
-            height: 2px;
-            background-color: #d3d3d3;
-            z-index: -1;
-            transform: translateY(-50%);
-            height: 100%;
+          position: absolute;
+          top: 50%;
+          left: 100%; /* Position line after the circle */
+          width: 100px; /* Length of the line between circles */
+          height: 2px; /* Thickness of the line */
+          background-color: #d3d3d3; /* Default grey color */
+          z-index: -1;
+          transform: translateY(-50%); /* Center the line vertically */
         }
         .step.complete .line {
             background-color: #090C9B;
@@ -259,31 +258,32 @@
 <div class="divider"></div>
 <h2>Milestone Progress</h2>
 <div class="progress-container">
-        <div class="step">
-            <div class="circle">✓</div>
-            <div class="line"></div>
-            <div class="label">5 challenges completed</div>
-        </div>
-        <div class="step">
-            <div class="circle">✓</div>
-            <div class="line"></div>
-            <div class="label">10 challenges completed</div>
-        </div>
-        <div class="step">
-            <div class="circle">✓</div>
-            <div class="line"></div>
-            <div class="label">15 challenges completed</div>
-        </div>
-        <div class="step">
-            <div class="circle">✓</div>
-            <div class="line"></div>
-            <div class="label">20 challenges completed</div>
-        </div>
-        <div class="step">
-            <div class="circle">✓</div>
-            <div class="label">25 challenges completed</div>
-        </div>
+    <div class="step complete">
+        <div class="circle">✓</div>
+        <div class="line"></div>
+        <div class="label">5 challenges completed</div>
     </div>
+    <div class="step complete">
+        <div class="circle">✓</div>
+        <div class="line"></div>
+        <div class="label">10 challenges completed</div>
+    </div>
+    <div class="step complete">
+        <div class="circle">✓</div>
+        <div class="line"></div>
+        <div class="label">15 challenges completed</div>
+    </div>
+    <div class="step active">
+        <div class="circle">✓</div>
+        <div class="line"></div>
+        <div class="label">20 challenges completed</div>
+    </div>
+    <div class="step">
+        <div class="circle"></div>
+        <div class="label">25 challenges completed</div>
+    </div>
+</div>
+
     
     <div class="challenge-container">
         <div class="challenge-card">
@@ -315,16 +315,63 @@
 </div>
 
 <script>
-        // Initialize or retrieve points
-        let points = localStorage.getItem("points") ? parseInt(localStorage.getItem("points")) : 0;
+    // Initialize or retrieve points and completed challenges
+    let points = localStorage.getItem("points") ? parseInt(localStorage.getItem("points")) : 0;
+    let challengesCompleted = localStorage.getItem("challengesCompleted") 
+        ? parseInt(localStorage.getItem("challengesCompleted")) 
+        : 0;
 
-        function completeChallenge(button) {
+    // Function to complete a challenge
+    function completeChallenge(button) {
+        if (!button.disabled) {
+            // Update button state
             button.disabled = true;
             button.textContent = "Completed!";
-            points += 50; // Add 50 AP
-            localStorage.setItem("points", points); // Save points to localStorage
-            alert("Challenge completed! You earned 50 AP.");
+            
+            // Update points and challenges
+            points += 50;
+            challengesCompleted += 1;
+
+            // Save to localStorage
+            localStorage.setItem("points", points);
+            localStorage.setItem("challengesCompleted", challengesCompleted);
+
+            alert(`Challenge completed! You earned 50 AP. Total: ${points} AP`);
+
+            // Update milestone progress immediately
+            updateProgress();
         }
-    </script>
+    }
+
+    // Function to dynamically update milestone progress bar
+    function updateProgress() {
+        const steps = document.querySelectorAll(".step");
+        
+        steps.forEach((step, index) => {
+            const circle = step.querySelector(".circle");
+            const line = step.querySelector(".line");
+            const stepRequirement = (index + 1) * 5; // Milestone targets: 5, 10, 15, etc.
+
+            // Reset the visual states
+            step.classList.remove("active", "complete");
+            circle.textContent = ""; // Clear old text
+
+            if (challengesCompleted >= stepRequirement) {
+                // Mark the milestone as complete
+                step.classList.add("complete");
+                circle.textContent = "✓";
+            } else if (challengesCompleted >= stepRequirement - 5 && challengesCompleted < stepRequirement) {
+                // Mark the milestone as active (current in-progress step)
+                step.classList.add("active");
+                circle.textContent = "✓";
+            }
+        });
+    }
+
+    // Ensure progress is updated when the page is loaded
+    document.addEventListener("DOMContentLoaded", updateProgress);
+</script>
+
+
 </body>
 </html>
