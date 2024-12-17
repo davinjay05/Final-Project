@@ -246,9 +246,10 @@
 <header>
     <div class="logo">OceanAction</div>
     <nav>
-        <a href="#shop">Point Shop</a>
+        <a href="C:\Users\My Laptop\Downloads\project assignment\Final-Project\index.html">Menu</a>
+        <a href="C:\\Users\\My Laptop\\Downloads\\project assignment\\Final-Project\\Aqua Point Shop Page.html">Point Shop</a>
         <a href="#community">Community</a>
-        <a href="#challenges">Join a Challenge</a>
+        <a href="C:\\Users\\My Laptop\\Downloads\\project assignment\\Final-Project\\Challenges.html">Join a Challenge</a>
         <a href="#profile">My Profile</a>
         <a href="C:\Users\My Laptop\Downloads\project assignment\Login.html" class="cta-button">Login/Sign Up</a>
     </nav>
@@ -284,92 +285,46 @@
         </div>
     </div>
     
-<div class="challenge-container">
-    <div class="challenge-card">
-        <img src="Understand-and-beat-marine-pollution.webp" alt="Marine Pollution">
-        <div class="challenge-content">
-                <div class="challenge-name">Understand and beat marine pollution</div>
-                <div class="challenge-description">Understand and map land and sea-based sources of pollutants and contaminants and their potential impacts on human health and ocean ecosystems and develop solutions to remove or mitigate them.</div>
-                <input type="checkbox" id="challenge1">
-                <label for="challenge1">Select</label>
-            </label>
+    <div class="challenge-container">
+        <div class="challenge-card">
+            <img src="Understand-and-beat-marine-pollution.webp" alt="Challenge 1">
+            <div>
+                <strong>Understand and beat marine pollution</strong>
+                <p>Map and mitigate land and sea-based pollutants.</p>
+            </div>
+            <button onclick="completeChallenge(this)">Complete</button>
         </div>
-        <button class="refresh-button">&#x21bb;</button>
-    </div>
 
-    <div class="challenge-card">
-        <img src="Protect-and-restore-ecosystems-and-biodiversity.webp" width="200">
-        <div class="challenge-content">
-            <div class="challenge-name">Protect and restore ecosystems and biodiversity</div>
-            <div class="challenge-description">Understand the effects of multiple stressors on ocean ecosystems, and develop solutions to monitor, protect, manage and restore ecosystems and their biodiversity under changing environmental, social and climate conditions.</div>
-            <input type="checkbox" id="challenge2">
-            <label for="challenge2">Select</label>
-            </label>
+        <div class="challenge-card">
+            <img src="Protect-and-restore-ecosystems-and-biodiversity.webp" alt="Challenge 2">
+            <div>
+                <strong>Protect and restore ecosystems</strong>
+                <p>Protect and monitor ecosystems under changing conditions.</p>
+            </div>
+            <button onclick="completeChallenge(this)">Complete</button>
         </div>
-        <button class="refresh-button">&#x21bb;</button>
-    </div>
 
-    <div class="challenge-card">
-        <img src="Create-a-digital-representation-of-the-ocean.webp" width="200">
-        <div class="challenge-content">
-            <div class="challenge-name">Create a digital representation of the ocean</div>
-            <div class="challenge-description">Through multi-stakeholder collaboration, develop a comprehensive digital representation of the ocean, including a dynamic ocean map, which provides free and open access for exploring, discovering, and visualizing past, current, and future ocean conditions in a manner relevant to diverse stakeholders.</div>
-            <input type="checkbox" id="challenge3">
-            <label for="challenge3">Select</label>
-            </label>
+        <div class="challenge-card">
+            <img src="Create-a-digital-representation-of-the-ocean.webp" alt="Challenge 3">
+            <div>
+               <strong>Create a digital ocean map</strong>
+               <p>Develop a digital representation of the ocean.</p>
+            </div>
+            <button onclick="completeChallenge(this)">Complete</button>
         </div>
-        <button class="refresh-button">&#x21bb;</button>
-    </div>
-    <div class="points-container">
-        Points: <span id="points">0</span>
-    </div>
-    
-
-    <button class="complete-button">Complete Challenge</button>
-</div>    
+</div>
 
 <script>
-        const steps = document.querySelectorAll('.step');
-        const button = document.querySelector('.complete-button');
-        const checkboxes = document.querySelectorAll('input[type= "checkbox"]');
-        const pointsDisplay = document.getElementById('points');
-        let currentStep = 0;
-        let points = 0;
+        // Initialize or retrieve points
+        let points = localStorage.getItem("points") ? parseInt(localStorage.getItem("points")) : 0;
 
-        function updatePoints() {
-            points += 50; // Add 50 points per challenge
-            pointsDisplay.textContent = points; // Update the displayed points
+        function completeChallenge(button) {
+            button.disabled = true;
+            button.textContent = "Completed!";
+            points += 50; // Add 50 AP
+            localStorage.setItem("points", points); // Save points to localStorage
+            alert("Challenge completed! You earned 50 AP.");
         }
-
-        function completeStep() {
-          if (currentStep < steps.length) {
-                steps[currentStep].classList.add('complete');
-                currentStep++;
-                updatePoints();
-
-            // Disable button if all steps are complete
-              if (currentStep === steps.length) {
-                    button.disabled = true;
-                    button.textContent = "All Challenges Completed!";
-                    checkboxes.forEach(checkbox => checkbox.disabled = true);
-            }
-        }
-    }
-    
-    button.addEventListener('click', completeStep);
-
-        // Event listeners for checkboxes
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', (e) => {
-            if (e.target.checked) {
-                completeStep();
-                e.target.disabled = true;
-            }
-        });
-    });
-
-    // Initialize first step as active
-    steps[0].classList.add('complete');
-</script>
+    </script>
 </body>
 </html>
