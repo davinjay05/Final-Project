@@ -77,6 +77,8 @@
             max-width: 70%;
             display: flex;
             flex-direction: column;
+            flex: 1;
+            margin-left: 20px;
         }
 
         .challenge-name {
@@ -227,6 +229,11 @@
             font-size: 14px;
             text-align: center;
         }
+        .points-container {
+            text-align: center;
+            font-size: 20px;
+            margin: 20px;
+        }
         footer {
             background: #14213D;
             color: #E0FBFC;
@@ -313,46 +320,56 @@
         </div>
         <button class="refresh-button">&#x21bb;</button>
     </div>
-
-<div class="button-container">
-        <button class="complete-button">Complete Challenge</button>
+    <div class="points-container">
+        Points: <span id="points">0</span>
     </div>
-</div>
-    <script>
+    
+
+    <button class="complete-button">Complete Challenge</button>
+</div>    
+
+<script>
         const steps = document.querySelectorAll('.step');
         const button = document.querySelector('.complete-button');
         const checkboxes = document.querySelectorAll('input[type= "checkbox"]');
+        const pointsDisplay = document.getElementById('points');
         let currentStep = 0;
+        let points = 0;
+
+        function updatePoints() {
+            points += 50; // Add 50 points per challenge
+            pointsDisplay.textContent = points; // Update the displayed points
+        }
 
         function completeStep() {
-            if (currentStep < steps.length) {
+          if (currentStep < steps.length) {
                 steps[currentStep].classList.add('complete');
-                if (currentStep + 1 < steps.length) {
-                    steps[currentStep + 1].classList.add('active');
-                }
                 currentStep++;
+                updatePoints();
 
-                // Disable button if all steps are complete
-                if (currentStep === steps.length) {
+            // Disable button if all steps are complete
+              if (currentStep === steps.length) {
                     button.disabled = true;
                     button.textContent = "All Challenges Completed!";
                     checkboxes.forEach(checkbox => checkbox.disabled = true);
-                }
             }
         }
-        button.addEventListener('click', completeStep);
+    }
+    
+    button.addEventListener('click', completeStep);
 
         // Event listeners for checkboxes
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', (e) => {
-                if (e.target.checked) {
-                    completeStep();
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                completeStep();
+                e.target.disabled = true;
             }
-         });
-       });
+        });
+    });
 
-        // Initialize first step as active
-        steps[0].classList.add('active');
-    </script>
+    // Initialize first step as active
+    steps[0].classList.add('complete');
+</script>
 </body>
 </html>
