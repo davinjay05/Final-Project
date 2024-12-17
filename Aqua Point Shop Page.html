@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaPoint Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            margin-left: 20px;
+            font-family: 'Times New Roman', serif;
+        }
+        h2 {
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+        }
+
+        .header {
+            background-color: white;
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: 700;
+            color: #0018A8;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        .login {
+            display: flex;
+            align-items: center;
+        }
+
+        .login button {
+            background-color: #0018A8;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .login button:hover {
+            background-color: #0041E0;
+        }
+
+        .shop-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f4faff;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .shop-header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .points {
+            background-color: #dff4ff;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 1.2em;
+        }
+
+        .shop-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: contain;
+        }
+        .product-card img:hover {
+            transform: scale(1.1);
+        }
+
+        .product-card h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .product-card button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .product-card:hover {
+            background-color:#dff4ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">OceanAction</div>
+        <div class="nav">
+            <a href="#">Point Shop</a>
+            <a href="#">Community</a>
+            <a href="#">Join a Challenge</a>
+            <a href="#">My profile</a>
+        </div>
+        <nav class="login">
+            <a href="C:\Users\My Laptop\Downloads\project assignment\Login.html" class="cta-button">Login/Sign Up</a>
+        </nav>
+    </div>
+
+    <div class="shop-header">
+        <h1>AquaPoint Shop</h1>
+        <div class="points">90 AP</div>
+    </div>
+
+    <div class="shop-container">
+        <div class="product-card">
+            <img src="starbucks.png" alt="Product 1">
+            <h3>$10 Starbucks Gift Card</h3>
+            <p>100 AP</p>
+            <button onclick="buyProduct(100, this)">Buy</button>
+        </div>
+        <div class="product-card">
+            <img src="h&m.png" alt="Product 2">
+            <h3>$10 H&M Gift Card</h3>
+            <p>100 AP</p>
+            <button onclick="buyProduct(100, this)">Buy</button>
+        </div>
+        <div class="product-card">
+            <img src="lego.png" alt="Product 3">
+            <h3>$10 Lego Gift Card</h3>
+            <p>100 AP</p>
+            <button onclick="buyProduct(100, this)">Buy</button>
+        </div>
+        <div class="product-card">
+            <img src="adidas.png" alt="Product 4">
+            <h3>$10 Adidas Gift Card</h3>
+            <p>100 AP</p>
+            <button onclick="buyProduct(100, this)">Buy</button>
+        </div>
+    </div>
+    <div class="shop-container">
+        <div class="product-card">
+            <img src="roblox.png" alt="Product 1">
+            <h3>$10 Roblox Gift Card</h3>
+            <p>100 AP</p>
+            <button onclick="buyProduct(100, this)">Buy</button>
+        </div>
+        <div class="product-card">
+            <img src="fortnite.png" alt="Product 2">
+            <h3>$10 Fortnite Gift Card</h3>
+            <p>100 AP</p>
+            <button onclick="buyProduct(100, this)">Buy</button>
+        </div>
+        <div class="product-card">
+            <img src="xbox.png" alt="Product 3">
+            <h3>$10 Xbox Gift Card</h3>
+            <p>100 AP</p>
+            <button onclick="buyProduct(100, this)">Buy</button>
+        </div>
+        <div class="product-card">
+            <img src="steam.png" alt="Product 4">
+            <h3>$10 Steam Gift Card</h3>
+            <p>100 AP</p>
+            <button onclick="buyProduct(100, this)">Buy</button>
+        </div>
+    </div>
+    <script> 
+        let points = 90; 
+        function buyProduct(cost, button) { 
+            if (points >= cost) {
+                points -= cost; 
+                document.getElementById('points').innerText = points + " AP"; 
+                button.disabled = true; button.innerText = "Purchased"; 
+            } else { 
+                alert("Not enough points!"); 
+      } 
+    } 
+    </script>
+</body>
+</html>
