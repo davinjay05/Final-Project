@@ -106,6 +106,15 @@
             transition: background-color 0.3s;
         }
 
+        .refresh-button {
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            padding: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
         .refresh-button:hover {
             background-color: #e0e0e0;
         }
@@ -261,31 +270,31 @@
     <div class="step complete">
         <div class="circle">✓</div>
         <div class="line"></div>
-        <div class="label">1 challenges completed</div>
+        <div class="label"> 5 challenges completed</div>
     </div>
     <div class="step complete">
         <div class="circle">✓</div>
         <div class="line"></div>
-        <div class="label">2 challenges completed</div>
+        <div class="label"> 10 challenges completed</div>
     </div>
     <div class="step complete">
         <div class="circle">✓</div>
         <div class="line"></div>
-        <div class="label">3 challenges completed</div>
+        <div class="label"> 15 challenges completed</div>
     </div>
     <div class="step active">
         <div class="circle">✓</div>
         <div class="line"></div>
-        <div class="label">4 challenges completed</div>
+        <div class="label"> 20 challenges completed</div>
     </div>
     <div class="step">
-        <div class="circle"></div>
-        <div class="label">5 challenges completed</div>
+        <div class="circle">✓</div>
+        <div class="label"> 25 challenges completed</div>
     </div>
 </div>
 
-    
-    <div class="challenge-container">
+
+    <div class="challenge-container" id="challenge-container">
         <div class="challenge-card">
             <img src="Understand-and-beat-marine-pollution.webp" alt="Challenge 1">
             <div>
@@ -330,30 +339,113 @@
             </div>
             <button onclick="completeChallenge(this)">Complete</button>
         </div>
-        
+    </div>
+    <script>
+        // Predefined challenges
+        const challenges = [
+            {
+                img: "Understand-and-beat-marine-pollution.webp",
+                title: "Understand and beat marine pollution",
+                description: "Map and mitigate land and sea-based pollutants."
+            },
+            {
+                img: "Protect-and-restore-ecosystems-and-biodiversity.webp",
+                title: "Protect and restore ecosystems",
+                description: "Protect and monitor ecosystems under changing conditions."
+            },
+            {
+                img: "Create-a-digital-representation-of-the-ocean.webp",
+                title: "Create a digital ocean map",
+                description: "Develop a digital representation of the ocean."
+            },
+            {
+                img: "reduce waste.jpg",
+                title: "Reduce waste",
+                description: "Much of the waste that we produce on land ends up in the oceans. Stop using plastic bags: Usage and wrong disposal of plastic is a major cause of marine pollution."
+            },
+            {
+                img: "cleanup4.jpg",
+                title: "Organize a cleanup project for rivers and oceans",
+                description: "Engage your whole community to clean up a local river, seaside or an ocean."
+            }
+        ];
+    
+        // Populate challenges dynamically
+        const challengeContainer = document.getElementById('challenge-container');
+    
+        function createChallengeCard(challenge) {
+            const card = document.createElement('div');
+            card.classList.add('challenge-card');
+    
+            card.innerHTML = `
+                <img src="${challenge.img}" alt="${challenge.title}">
+                <div class="challenge-content">
+                    <strong>${challenge.title}</strong>
+                    <p>${challenge.description}</p>
+                </div>
+                <button class="complete-button" onclick="completeChallenge(this)">Complete</button>
+                <button class="refresh-button" onclick="refreshChallenge(this)">⟳</button>
+            `;
+            return card;
+        }
+    
+        function populateChallenges() {
+            challengeContainer.innerHTML = ""; // Clear existing challenges
+            challenges.forEach(challenge => {
+                challengeContainer.appendChild(createChallengeCard(challenge));
+            });
+        }
+    
+        // Handle challenge completion
+        function completeChallenge(button) {
+            if (button.disabled) return; // Prevent double-clicks
+    
+            button.disabled = true;
+            button.textContent = "Completed!";
+            alert("Challenge completed! Great job!");
+        }
+    
+        // Handle challenge refresh
+        function refreshChallenge(button) {
+            const parentCard = button.closest('.challenge-card');
+            const newChallenge = challenges[Math.floor(Math.random() * challenges.length)];
+    
+            parentCard.querySelector('img').src = newChallenge.img;
+            parentCard.querySelector('strong').textContent = newChallenge.title;
+            parentCard.querySelector('p').textContent = newChallenge.description;
+        }
+    
+        // Initialize the page
+        populateChallenges();
+    </script>
 </div>
 
 <script>
     // Retrieve or initialize points
+    const totalChallenges = 25; // Adjust the total milestones (5 milestones of 5 challenges each)
+    const challengesPerMilestone = 5; // Number of challenges per milestone
+    let completedChallenges = 0; // Track completed challenges
     let points = localStorage.getItem("points") ? parseInt(localStorage.getItem("points")) : 0;
-    let completedChallenges = 0; // Reset progress bar each time page reloads
-    const totalChallenges = 5; // Total number of challenges
 
     // Update the progress bar dynamically
     function updateProgressBar() {
         const steps = document.querySelectorAll('.step');
 
-        // Reset all steps first
-        steps.forEach(step => {
-            step.classList.remove('complete', 'active');
-        });
-
-        // Update progress
         steps.forEach((step, index) => {
-            if (index < completedChallenges) {
+            const milestone = (index + 1) * challengesPerMilestone; // Calculate the milestone count
+
+            // Update the label to match the milestone (5, 10, 15, etc.)
+            step.querySelector('.label').textContent = `${milestone} challenges completed`;
+
+            // Update step appearance based on progress
+            if (completedChallenges >= milestone) {
                 step.classList.add('complete');
-            } else if (index === completedChallenges) {
+                step.classList.remove('active');
+            } else if (completedChallenges > (milestone - challengesPerMilestone) && completedChallenges < milestone) {
                 step.classList.add('active');
+                step.classList.remove('complete');
+            } else {
+                step.classList.remove('complete', 'active');
             }
         });
 
