@@ -140,9 +140,13 @@
             border-radius: 10px;
             cursor: pointer;
             margin-bottom: 120px;
-        }
-        
+        }   
     </style>
+    <script>
+        function handleLogin() {
+            alert("You have successfully logged in!");
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -167,7 +171,7 @@
                 <div class="checkbox-label">Remember for 30 days</div>
             </div>
 
-            <button class="login-btn">Login</button>
+            <button class="login-btn" onclick="handleLogin()">Login</button>
 
             <div class="separator">
                 <div class="separator-line"></div>
